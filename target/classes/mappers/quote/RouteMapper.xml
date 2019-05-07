@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.juban.crm.dal.mapper.quote.RouteMapper">
+  <resultMap id="BaseResultMap" type="com.juban.crm.dal.entity.quote.Route">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="warehouse_id" jdbcType="VARCHAR" property="warehouseId" />
+    <result column="warehouse_code" jdbcType="VARCHAR" property="warehouseCode" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="source" jdbcType="BIGINT" property="source" />
+    <result column="delete_flag" jdbcType="BIGINT" property="deleteFlag" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="update_person" jdbcType="VARCHAR" property="updatePerson" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, no, name, account_id, type, warehouse_id, warehouse_code, customer_id, customer_code, 
+    source, delete_flag, create_person, update_person, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from route
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.juban.crm.dal.entity.quote.Route">
+    insert into route (id, no, name, 
+      account_id, type, warehouse_id, 
+      warehouse_code, customer_id, customer_code, 
+      source, delete_flag, create_person, 
+      update_person, create_time, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{accountId,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, #{warehouseId,jdbcType=VARCHAR}, 
+      #{warehouseCode,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{customerCode,jdbcType=VARCHAR}, 
+      #{source,jdbcType=BIGINT}, #{deleteFlag,jdbcType=BIGINT}, #{createPerson,jdbcType=VARCHAR}, 
+      #{updatePerson,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.juban.crm.dal.entity.quote.Route">
+    insert into route
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="no != null">
+        no,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id,
+      </if>
+      <if test="warehouseCode != null">
+        warehouse_code,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerCode != null">
+        customer_code,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="updatePerson != null">
+        update_person,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null">
+        #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseCode != null">
+        #{warehouseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=BIGINT},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.juban.crm.dal.entity.quote.Route">
+    update route
+    <set>
+      <if test="no != null">
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseCode != null">
+        warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        customer_code = #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=BIGINT},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.juban.crm.dal.entity.quote.Route">
+    update route
+    set no = #{no,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=VARCHAR},
+      customer_code = #{customerCode,jdbcType=VARCHAR},
+      source = #{source,jdbcType=BIGINT},
+      delete_flag = #{deleteFlag,jdbcType=BIGINT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.juban.crm.dal.entity.quote.Route">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="warehouse_id" jdbcType="VARCHAR" property="warehouseId" />
+    <result column="warehouse_code" jdbcType="VARCHAR" property="warehouseCode" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="source" jdbcType="BIGINT" property="source" />
+    <result column="delete_flag" jdbcType="BIGINT" property="deleteFlag" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="update_person" jdbcType="VARCHAR" property="updatePerson" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, no, name, account_id, type, warehouse_id, warehouse_code, customer_id, customer_code, 
+    source, delete_flag, create_person, update_person, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from route
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.juban.crm.dal.entity.quote.Route">
+    insert into route (id, no, name, 
+      account_id, type, warehouse_id, 
+      warehouse_code, customer_id, customer_code, 
+      source, delete_flag, create_person, 
+      update_person, create_time, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{accountId,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, #{warehouseId,jdbcType=VARCHAR}, 
+      #{warehouseCode,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{customerCode,jdbcType=VARCHAR}, 
+      #{source,jdbcType=BIGINT}, #{deleteFlag,jdbcType=BIGINT}, #{createPerson,jdbcType=VARCHAR}, 
+      #{updatePerson,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.juban.crm.dal.entity.quote.Route">
+    insert into route
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="no != null">
+        no,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id,
+      </if>
+      <if test="warehouseCode != null">
+        warehouse_code,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerCode != null">
+        customer_code,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="updatePerson != null">
+        update_person,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null">
+        #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseCode != null">
+        #{warehouseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=BIGINT},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.juban.crm.dal.entity.quote.Route">
+    update route
+    <set>
+      <if test="no != null">
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseCode != null">
+        warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        customer_code = #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=BIGINT},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.juban.crm.dal.entity.quote.Route">
+    update route
+    set no = #{no,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=VARCHAR},
+      customer_code = #{customerCode,jdbcType=VARCHAR},
+      source = #{source,jdbcType=BIGINT},
+      delete_flag = #{deleteFlag,jdbcType=BIGINT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.juban.crm.dal.entity.quote.Route">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="warehouse_id" jdbcType="VARCHAR" property="warehouseId" />
+    <result column="warehouse_code" jdbcType="VARCHAR" property="warehouseCode" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="source" jdbcType="BIGINT" property="source" />
+    <result column="delete_flag" jdbcType="BIGINT" property="deleteFlag" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="update_person" jdbcType="VARCHAR" property="updatePerson" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, no, name, account_id, type, warehouse_id, warehouse_code, customer_id, customer_code, 
+    source, delete_flag, create_person, update_person, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from route
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.juban.crm.dal.entity.quote.Route">
+    insert into route (id, no, name, 
+      account_id, type, warehouse_id, 
+      warehouse_code, customer_id, customer_code, 
+      source, delete_flag, create_person, 
+      update_person, create_time, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{accountId,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, #{warehouseId,jdbcType=VARCHAR}, 
+      #{warehouseCode,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{customerCode,jdbcType=VARCHAR}, 
+      #{source,jdbcType=BIGINT}, #{deleteFlag,jdbcType=BIGINT}, #{createPerson,jdbcType=VARCHAR}, 
+      #{updatePerson,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.juban.crm.dal.entity.quote.Route">
+    insert into route
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="no != null">
+        no,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id,
+      </if>
+      <if test="warehouseCode != null">
+        warehouse_code,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerCode != null">
+        customer_code,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="updatePerson != null">
+        update_person,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null">
+        #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseCode != null">
+        #{warehouseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=BIGINT},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.juban.crm.dal.entity.quote.Route">
+    update route
+    <set>
+      <if test="no != null">
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseCode != null">
+        warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        customer_code = #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=BIGINT},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.juban.crm.dal.entity.quote.Route">
+    update route
+    set no = #{no,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=VARCHAR},
+      customer_code = #{customerCode,jdbcType=VARCHAR},
+      source = #{source,jdbcType=BIGINT},
+      delete_flag = #{deleteFlag,jdbcType=BIGINT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.juban.crm.dal.entity.quote.Route">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="warehouse_id" jdbcType="VARCHAR" property="warehouseId" />
+    <result column="warehouse_code" jdbcType="VARCHAR" property="warehouseCode" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="source" jdbcType="BIGINT" property="source" />
+    <result column="delete_flag" jdbcType="BIGINT" property="deleteFlag" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="update_person" jdbcType="VARCHAR" property="updatePerson" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, no, name, account_id, type, warehouse_id, warehouse_code, customer_id, customer_code, 
+    source, delete_flag, create_person, update_person, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from route
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.juban.crm.dal.entity.quote.Route">
+    insert into route (id, no, name, 
+      account_id, type, warehouse_id, 
+      warehouse_code, customer_id, customer_code, 
+      source, delete_flag, create_person, 
+      update_person, create_time, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{accountId,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, #{warehouseId,jdbcType=VARCHAR}, 
+      #{warehouseCode,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{customerCode,jdbcType=VARCHAR}, 
+      #{source,jdbcType=BIGINT}, #{deleteFlag,jdbcType=BIGINT}, #{createPerson,jdbcType=VARCHAR}, 
+      #{updatePerson,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.juban.crm.dal.entity.quote.Route">
+    insert into route
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="no != null">
+        no,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id,
+      </if>
+      <if test="warehouseCode != null">
+        warehouse_code,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerCode != null">
+        customer_code,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="updatePerson != null">
+        update_person,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null">
+        #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseCode != null">
+        #{warehouseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=BIGINT},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.juban.crm.dal.entity.quote.Route">
+    update route
+    <set>
+      <if test="no != null">
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseCode != null">
+        warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        customer_code = #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=BIGINT},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.juban.crm.dal.entity.quote.Route">
+    update route
+    set no = #{no,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=VARCHAR},
+      customer_code = #{customerCode,jdbcType=VARCHAR},
+      source = #{source,jdbcType=BIGINT},
+      delete_flag = #{deleteFlag,jdbcType=BIGINT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.juban.crm.dal.entity.quote.Route">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="account_id" jdbcType="VARCHAR" property="accountId" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="warehouse_id" jdbcType="VARCHAR" property="warehouseId" />
+    <result column="warehouse_code" jdbcType="VARCHAR" property="warehouseCode" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="customer_code" jdbcType="VARCHAR" property="customerCode" />
+    <result column="source" jdbcType="BIGINT" property="source" />
+    <result column="delete_flag" jdbcType="BIGINT" property="deleteFlag" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="update_person" jdbcType="VARCHAR" property="updatePerson" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, no, name, account_id, type, warehouse_id, warehouse_code, customer_id, customer_code, 
+    source, delete_flag, create_person, update_person, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from route
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.juban.crm.dal.entity.quote.Route">
+    insert into route (id, no, name, 
+      account_id, type, warehouse_id, 
+      warehouse_code, customer_id, customer_code, 
+      source, delete_flag, create_person, 
+      update_person, create_time, update_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{accountId,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, #{warehouseId,jdbcType=VARCHAR}, 
+      #{warehouseCode,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{customerCode,jdbcType=VARCHAR}, 
+      #{source,jdbcType=BIGINT}, #{deleteFlag,jdbcType=BIGINT}, #{createPerson,jdbcType=VARCHAR}, 
+      #{updatePerson,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.juban.crm.dal.entity.quote.Route">
+    insert into route
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="no != null">
+        no,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="accountId != null">
+        account_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id,
+      </if>
+      <if test="warehouseCode != null">
+        warehouse_code,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerCode != null">
+        customer_code,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="updatePerson != null">
+        update_person,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null">
+        #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseCode != null">
+        #{warehouseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=BIGINT},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.juban.crm.dal.entity.quote.Route">
+    update route
+    <set>
+      <if test="no != null">
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="warehouseId != null">
+        warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseCode != null">
+        warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerCode != null">
+        customer_code = #{customerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=BIGINT},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.juban.crm.dal.entity.quote.Route">
+    update route
+    set no = #{no,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      account_id = #{accountId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      warehouse_id = #{warehouseId,jdbcType=VARCHAR},
+      warehouse_code = #{warehouseCode,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=VARCHAR},
+      customer_code = #{customerCode,jdbcType=VARCHAR},
+      source = #{source,jdbcType=BIGINT},
+      delete_flag = #{deleteFlag,jdbcType=BIGINT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

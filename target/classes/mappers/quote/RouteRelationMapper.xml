@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.juban.crm.dal.mapper.quote.RouteRelationMapper">
+  <resultMap id="BaseResultMap" type="com.juban.crm.dal.entity.quote.RouteRelation">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="route_id" jdbcType="VARCHAR" property="routeId" />
+    <result column="route_no" jdbcType="VARCHAR" property="routeNo" />
+    <result column="transceiver_id" jdbcType="VARCHAR" property="transceiverId" />
+    <result column="transceiver_code" jdbcType="VARCHAR" property="transceiverCode" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="update_person" jdbcType="VARCHAR" property="updatePerson" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, route_id, route_no, transceiver_id, transceiver_code, type, create_person, update_person, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from route_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    insert into route_relation (id, route_id, route_no, 
+      transceiver_id, transceiver_code, type, 
+      create_person, update_person, create_time, 
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{routeId,jdbcType=VARCHAR}, #{routeNo,jdbcType=VARCHAR}, 
+      #{transceiverId,jdbcType=VARCHAR}, #{transceiverCode,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, 
+      #{createPerson,jdbcType=VARCHAR}, #{updatePerson,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    insert into route_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="routeId != null">
+        route_id,
+      </if>
+      <if test="routeNo != null">
+        route_no,
+      </if>
+      <if test="transceiverId != null">
+        transceiver_id,
+      </if>
+      <if test="transceiverCode != null">
+        transceiver_code,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="updatePerson != null">
+        update_person,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="routeId != null">
+        #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeNo != null">
+        #{routeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverId != null">
+        #{transceiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverCode != null">
+        #{transceiverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    update route_relation
+    <set>
+      <if test="routeId != null">
+        route_id = #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeNo != null">
+        route_no = #{routeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverId != null">
+        transceiver_id = #{transceiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverCode != null">
+        transceiver_code = #{transceiverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    update route_relation
+    set route_id = #{routeId,jdbcType=VARCHAR},
+      route_no = #{routeNo,jdbcType=VARCHAR},
+      transceiver_id = #{transceiverId,jdbcType=VARCHAR},
+      transceiver_code = #{transceiverCode,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.juban.crm.dal.entity.quote.RouteRelation">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="route_id" jdbcType="VARCHAR" property="routeId" />
+    <result column="route_no" jdbcType="VARCHAR" property="routeNo" />
+    <result column="transceiver_id" jdbcType="VARCHAR" property="transceiverId" />
+    <result column="transceiver_code" jdbcType="VARCHAR" property="transceiverCode" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="update_person" jdbcType="VARCHAR" property="updatePerson" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, route_id, route_no, transceiver_id, transceiver_code, type, create_person, update_person, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from route_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    insert into route_relation (id, route_id, route_no, 
+      transceiver_id, transceiver_code, type, 
+      create_person, update_person, create_time, 
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{routeId,jdbcType=VARCHAR}, #{routeNo,jdbcType=VARCHAR}, 
+      #{transceiverId,jdbcType=VARCHAR}, #{transceiverCode,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, 
+      #{createPerson,jdbcType=VARCHAR}, #{updatePerson,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    insert into route_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="routeId != null">
+        route_id,
+      </if>
+      <if test="routeNo != null">
+        route_no,
+      </if>
+      <if test="transceiverId != null">
+        transceiver_id,
+      </if>
+      <if test="transceiverCode != null">
+        transceiver_code,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="updatePerson != null">
+        update_person,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="routeId != null">
+        #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeNo != null">
+        #{routeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverId != null">
+        #{transceiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverCode != null">
+        #{transceiverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    update route_relation
+    <set>
+      <if test="routeId != null">
+        route_id = #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeNo != null">
+        route_no = #{routeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverId != null">
+        transceiver_id = #{transceiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverCode != null">
+        transceiver_code = #{transceiverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    update route_relation
+    set route_id = #{routeId,jdbcType=VARCHAR},
+      route_no = #{routeNo,jdbcType=VARCHAR},
+      transceiver_id = #{transceiverId,jdbcType=VARCHAR},
+      transceiver_code = #{transceiverCode,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.juban.crm.dal.entity.quote.RouteRelation">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="route_id" jdbcType="VARCHAR" property="routeId" />
+    <result column="route_no" jdbcType="VARCHAR" property="routeNo" />
+    <result column="transceiver_id" jdbcType="VARCHAR" property="transceiverId" />
+    <result column="transceiver_code" jdbcType="VARCHAR" property="transceiverCode" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="update_person" jdbcType="VARCHAR" property="updatePerson" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, route_id, route_no, transceiver_id, transceiver_code, type, create_person, update_person, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from route_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    insert into route_relation (id, route_id, route_no, 
+      transceiver_id, transceiver_code, type, 
+      create_person, update_person, create_time, 
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{routeId,jdbcType=VARCHAR}, #{routeNo,jdbcType=VARCHAR}, 
+      #{transceiverId,jdbcType=VARCHAR}, #{transceiverCode,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, 
+      #{createPerson,jdbcType=VARCHAR}, #{updatePerson,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    insert into route_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="routeId != null">
+        route_id,
+      </if>
+      <if test="routeNo != null">
+        route_no,
+      </if>
+      <if test="transceiverId != null">
+        transceiver_id,
+      </if>
+      <if test="transceiverCode != null">
+        transceiver_code,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="updatePerson != null">
+        update_person,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="routeId != null">
+        #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeNo != null">
+        #{routeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverId != null">
+        #{transceiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverCode != null">
+        #{transceiverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    update route_relation
+    <set>
+      <if test="routeId != null">
+        route_id = #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeNo != null">
+        route_no = #{routeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverId != null">
+        transceiver_id = #{transceiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverCode != null">
+        transceiver_code = #{transceiverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    update route_relation
+    set route_id = #{routeId,jdbcType=VARCHAR},
+      route_no = #{routeNo,jdbcType=VARCHAR},
+      transceiver_id = #{transceiverId,jdbcType=VARCHAR},
+      transceiver_code = #{transceiverCode,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.juban.crm.dal.entity.quote.RouteRelation">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="route_id" jdbcType="VARCHAR" property="routeId" />
+    <result column="route_no" jdbcType="VARCHAR" property="routeNo" />
+    <result column="transceiver_id" jdbcType="VARCHAR" property="transceiverId" />
+    <result column="transceiver_code" jdbcType="VARCHAR" property="transceiverCode" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="update_person" jdbcType="VARCHAR" property="updatePerson" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, route_id, route_no, transceiver_id, transceiver_code, type, create_person, update_person, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from route_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    insert into route_relation (id, route_id, route_no, 
+      transceiver_id, transceiver_code, type, 
+      create_person, update_person, create_time, 
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{routeId,jdbcType=VARCHAR}, #{routeNo,jdbcType=VARCHAR}, 
+      #{transceiverId,jdbcType=VARCHAR}, #{transceiverCode,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, 
+      #{createPerson,jdbcType=VARCHAR}, #{updatePerson,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    insert into route_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="routeId != null">
+        route_id,
+      </if>
+      <if test="routeNo != null">
+        route_no,
+      </if>
+      <if test="transceiverId != null">
+        transceiver_id,
+      </if>
+      <if test="transceiverCode != null">
+        transceiver_code,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="updatePerson != null">
+        update_person,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="routeId != null">
+        #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeNo != null">
+        #{routeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverId != null">
+        #{transceiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverCode != null">
+        #{transceiverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    update route_relation
+    <set>
+      <if test="routeId != null">
+        route_id = #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeNo != null">
+        route_no = #{routeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverId != null">
+        transceiver_id = #{transceiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverCode != null">
+        transceiver_code = #{transceiverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    update route_relation
+    set route_id = #{routeId,jdbcType=VARCHAR},
+      route_no = #{routeNo,jdbcType=VARCHAR},
+      transceiver_id = #{transceiverId,jdbcType=VARCHAR},
+      transceiver_code = #{transceiverCode,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.juban.crm.dal.entity.quote.RouteRelation">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="route_id" jdbcType="VARCHAR" property="routeId" />
+    <result column="route_no" jdbcType="VARCHAR" property="routeNo" />
+    <result column="transceiver_id" jdbcType="VARCHAR" property="transceiverId" />
+    <result column="transceiver_code" jdbcType="VARCHAR" property="transceiverCode" />
+    <result column="type" jdbcType="BIGINT" property="type" />
+    <result column="create_person" jdbcType="VARCHAR" property="createPerson" />
+    <result column="update_person" jdbcType="VARCHAR" property="updatePerson" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, route_id, route_no, transceiver_id, transceiver_code, type, create_person, update_person, 
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from route_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from route_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    insert into route_relation (id, route_id, route_no, 
+      transceiver_id, transceiver_code, type, 
+      create_person, update_person, create_time, 
+      update_time)
+    values (#{id,jdbcType=VARCHAR}, #{routeId,jdbcType=VARCHAR}, #{routeNo,jdbcType=VARCHAR}, 
+      #{transceiverId,jdbcType=VARCHAR}, #{transceiverCode,jdbcType=VARCHAR}, #{type,jdbcType=BIGINT}, 
+      #{createPerson,jdbcType=VARCHAR}, #{updatePerson,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    insert into route_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="routeId != null">
+        route_id,
+      </if>
+      <if test="routeNo != null">
+        route_no,
+      </if>
+      <if test="transceiverId != null">
+        transceiver_id,
+      </if>
+      <if test="transceiverCode != null">
+        transceiver_code,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createPerson != null">
+        create_person,
+      </if>
+      <if test="updatePerson != null">
+        update_person,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="routeId != null">
+        #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeNo != null">
+        #{routeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverId != null">
+        #{transceiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverCode != null">
+        #{transceiverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    update route_relation
+    <set>
+      <if test="routeId != null">
+        route_id = #{routeId,jdbcType=VARCHAR},
+      </if>
+      <if test="routeNo != null">
+        route_no = #{routeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverId != null">
+        transceiver_id = #{transceiverId,jdbcType=VARCHAR},
+      </if>
+      <if test="transceiverCode != null">
+        transceiver_code = #{transceiverCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIGINT},
+      </if>
+      <if test="createPerson != null">
+        create_person = #{createPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="updatePerson != null">
+        update_person = #{updatePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.juban.crm.dal.entity.quote.RouteRelation">
+    update route_relation
+    set route_id = #{routeId,jdbcType=VARCHAR},
+      route_no = #{routeNo,jdbcType=VARCHAR},
+      transceiver_id = #{transceiverId,jdbcType=VARCHAR},
+      transceiver_code = #{transceiverCode,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIGINT},
+      create_person = #{createPerson,jdbcType=VARCHAR},
+      update_person = #{updatePerson,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
